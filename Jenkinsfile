@@ -5,14 +5,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                container('podman') {
+                container('flyway') {
                     script {
-                        sh 'podman ps'
-                    }
-                }
-                container('kubectl') {
-                    script {
-                        sh 'kubectl version'
+                        sh 'flyway info -url="jdbc:mysql://mysql.mysql.svc.cluster.local:3306/devops" -user=elon -password=musk'
                     }
                 }
             }
